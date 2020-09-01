@@ -1,0 +1,59 @@
+step 1- Create ec2 instance 
+
+2) yum install java-1.8*
+
+3) to check java install r not using - java -version
+
+4)download the tomcat package 
+cd /opt
+wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
+tar -xvzf /opt/apache-tomcat-8.5.35.tar.gz
+
+5)Giving excute permission to startup.sh & shutdown.sh
+cd /opt/apache-tomcat-8.5.35.tar.gz/bin
+chmod +x startup.sh 
+chmod +x shutdown.sh
+
+6)To start & stop tomcat webserver 
+./startup.sh - to start the tomcat service 
+./shutdown.sh- to stop the tomcat service 
+
+7)Creating a soft link to easy access
+Startup - ln -s /opt/apache-tomcat-8.5.35/bin/startup.sh /usr/local/bin/tomcatup
+shutdown -ln -s /opt/apache-tomcat-8.5.35/bin/shutdown.sh /usr/local/bin/tomcatdown
+	
+8)to start tomcat webserver
+tomcatup
+
+9)to run the tomacat web server 
+http://public_ip:8080
+
+10)Tomcat and Jenkins runs on ports number 8080.Hence lets change tomcat port number to 8090cd /opt/apache-tomcat-8.5.35/conf
+# update port number in the "connecter port" field in server.xml
+# restart tomcat after configuration update
+tomcatdown
+tomcatup
+
+11) tomcat application doesnt allow to login from browser. changing a default parameter in context.xml does address this issue#search for context.html
+find / -name context.xml
+we will get 3 lines,in that last two lines we have to comment 
+<!--  <value classname-------0:0:0:1"/> -->
+tomcatdown
+tomcatup	
+
+12)Update users information in the tomcat-users.xml file goto tomcat home directory and Add below users to conf/tomcat-user.xml file 
+cd /opt/apache-tomcat-8.5.35.tar.gz/conf/tomcat-user.xml
+above tomcat user details
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+tomcatdown
+tomcatup
+
+
+      				-----------------------------THE END------------------------------
+

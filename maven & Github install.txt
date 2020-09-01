@@ -1,0 +1,28 @@
+INSTALLATIONS:-
+===================
+Steps :-
+1)Download maven on jenkins server.
+wget http://apachemirror.wuchna.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+
+2)Setup M2_HOME and M2 paths in .bash_prfile of user.
+  M2_Home=/opt/maven/apache-maven-3.6.3
+  M2=$M2_HOME/bin
+  PATH=$PATH:$JAVA_HOME:$M2_HOME:$M2:$HOME/bin
+
+3)Install git
+  yum install git -y
+
+4)check maven version 
+mvn_version
+
+Configuration:-
+
+1)Login to jenkins console
+
+2)Install maven & git plugin without restart
+  Manage jenkins -->Manage plugin --> Available -->"Maven Invoke"
+  Manage jenkins -->Manage plugin --> Available -->"github"
+
+3)Set maven & git path
+ Manage jenkins -->Global Tool Configuration --> Maven
+ Manage jenkins -->Global Tool Congiguration -->git

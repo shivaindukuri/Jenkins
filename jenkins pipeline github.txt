@@ -1,0 +1,20 @@
+steps :-
+
+1)Jenkins --> Manage Jenkins --> Manage Pluginis -->Availble --> Pipeline --> Install without restart
+
+2)New item --> Job Name --> pipeline -->
+pipeline {
+	agent any
+	stages {
+		stage("github") {
+			steps{
+				github url
+			
+				
+3)pipleine --> git:Gigt -->Repository url --> Branch --> Crendentials --> Genarate Pipeline script
+
+4)Apply --> Save 
+
+5)Build Now
+
+6)
