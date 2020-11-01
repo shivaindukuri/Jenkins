@@ -1,0 +1,25 @@
+Steps to deploy the source code in tomcat server
+
+step 1 :- Go to the manage plugin --> Availble --> download with restart following plugins 
+
+1)Maven invoke
+
+2)Github plugin
+
+3)deploy on container 
+
+step 2 :- Create Project and select maven project
+
+step 3 :- In Source code management clone your git url and paste into it 
+
+step 4 :- In Build , automatically it take pom.xml but in goals and option type "clean install package"
+
+step 5 :- Next post build action, select Deploy war to container option
+	--> WAR FILES , by defualt "**/*.war"
+	--> containers , select tomcat version and in credientials using deployer as user and passwd. Last option copy ur tomcat URL
+step 6 :- click on Save & Apply
+
+step 7 :- Build Now 
+
+
+
